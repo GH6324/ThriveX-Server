@@ -5,7 +5,6 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import liuyuyang.net.common.annotation.NoTokenRequired;
-import liuyuyang.net.common.annotation.PremName;
 import liuyuyang.net.dto.album.AlbumImageAddFormDTO;
 import liuyuyang.net.model.AlbumImage;
 import liuyuyang.net.common.utils.Result;
@@ -26,7 +25,6 @@ public class AlbumImageController {
     @Resource
     private AlbumImageService albumImageService;
 
-    @PremName("album_image:add")
     @PostMapping
     @ApiOperation("新增照片")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 1)
@@ -35,7 +33,6 @@ public class AlbumImageController {
         return Result.success();
     }
 
-    @PremName("album_image:del")
     @DeleteMapping("/{id}")
     @ApiOperation("删除照片")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 2)
@@ -44,7 +41,6 @@ public class AlbumImageController {
         return Result.success();
     }
 
-    @PremName("album_image:del")
     @DeleteMapping("/batch")
     @ApiOperation("批量删除照片")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 3)
@@ -53,7 +49,6 @@ public class AlbumImageController {
         return Result.success();
     }
 
-    @PremName("album_image:edit")
     @PatchMapping
     @ApiOperation("编辑照片")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 4)

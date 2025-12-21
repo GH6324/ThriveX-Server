@@ -5,7 +5,6 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import liuyuyang.net.common.annotation.NoTokenRequired;
-import liuyuyang.net.common.annotation.PremName;
 import liuyuyang.net.dto.album.AlbumCateAddFormDTO;
 import liuyuyang.net.model.AlbumCate;
 import liuyuyang.net.common.utils.Result;
@@ -27,7 +26,6 @@ public class AlbumCateController {
     @Resource
     private AlbumCateService albumCateService;
 
-    @PremName("album_cate:add")
     @PostMapping
     @ApiOperation("新增相册")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 1)
@@ -36,7 +34,6 @@ public class AlbumCateController {
         return Result.success();
     }
 
-    @PremName("album_cate:del")
     @DeleteMapping("/{id}")
     @ApiOperation("删除相册")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 2)
@@ -45,7 +42,6 @@ public class AlbumCateController {
         return Result.success();
     }
 
-    @PremName("album_cate:del")
     @DeleteMapping("/batch")
     @ApiOperation("批量删除相册")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 3)
@@ -54,7 +50,6 @@ public class AlbumCateController {
         return Result.success();
     }
 
-    @PremName("album_cate:edit")
     @PatchMapping
     @ApiOperation("编辑相册")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 4)

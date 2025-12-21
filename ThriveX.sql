@@ -16,61 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `album_cate`
---
-
-DROP TABLE IF EXISTS `album_cate`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `album_cate` (
-                              `id` int NOT NULL AUTO_INCREMENT,
-                              `name` varchar(255) NOT NULL COMMENT '相册名称',
-                              `cover` text COMMENT '相册封面',
-                              PRIMARY KEY (`id`),
-                              UNIQUE KEY `album_pk_2` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `album_cate`
---
-
-LOCK TABLES `album_cate` WRITE;
-/*!40000 ALTER TABLE `album_cate` DISABLE KEYS */;
-INSERT INTO `album_cate` VALUES (1,'旅行','https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100');
-/*!40000 ALTER TABLE `album_cate` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `album_image`
---
-
-DROP TABLE IF EXISTS `album_image`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `album_image` (
-                               `id` int NOT NULL AUTO_INCREMENT,
-                               `name` varchar(255) NOT NULL COMMENT '照片名称',
-                               `description` varchar(255) DEFAULT NULL COMMENT '照片描述',
-                               `image` text COMMENT '照片地址',
-                               `cate_id` int NOT NULL COMMENT '相册 ID',
-                               `create_time` varchar(255) NOT NULL,
-                               PRIMARY KEY (`id`),
-                               UNIQUE KEY `album_image_pk_2` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `album_image`
---
-
-LOCK TABLES `album_image` WRITE;
-/*!40000 ALTER TABLE `album_image` DISABLE KEYS */;
-INSERT INTO `album_image` VALUES (1,'日本富士山','日本标志性的富士山风景,白雪皑皑的山顶与蓝天相映成趣','https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(2,'日落时分','夕阳西下的美丽景色,金色的阳光洒在大地上','https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(3,'山川湖泊','壮丽的山川与平静的湖泊交相辉映,展现大自然的鬼斧神工','https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(4,'星空璀璨','繁星点点的夜空,银河横跨天际,令人沉醉的夜景','https://images.unsplash.com/photo-1441716844725-09cedc13a4e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(5,'绿色山谷','郁郁葱葱的山谷,清新的空气与翠绿的植被构成和谐画面','https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(6,'京都古寺','日本京都的传统寺庙,展现着东方古典建筑的独特魅力','https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(7,'城市夜景','灯火通明的现代都市,霓虹闪烁的夜晚风景','https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(8,'海边日落','金色的夕阳映照在海面上,浪花轻轻拍打着沙滩','https://images.unsplash.com/photo-1504198322253-cfa87a0ff25f?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(9,'樱花季节','粉色的樱花绽放,营造出浪漫唯美的春日氛围','https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(10,'繁华都市','现代化的城市景观,高楼大厦鳞次栉比','https://images.unsplash.com/photo-1503614472-8c93d56e92ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(11,'雪山之巅','巍峨的雪山山峰,白雪皑皑,云雾缭绕','https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(13,'街头巷尾','充满生活气息的街道,记录着城市的日常点滴','https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(14,'晨光熹微','清晨的第一缕阳光,唤醒沉睡的大地','https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(15,'极光之夜','绚丽的北极光在夜空中舞动,创造出梦幻般的景象','https://images.unsplash.com/photo-1504714146340-959ca07e1f38?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508'),(16,'山水如画','如诗如画的山水风景,展现大自然的壮美与和谐','https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=3840&q=100',1,'1729224230508');
-/*!40000 ALTER TABLE `album_image` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `article`
 --
 
@@ -734,4 +679,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-12-21 17:10:28
+-- Dump completed on 2025-12-21 17:30:10

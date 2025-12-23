@@ -6,6 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import liuyuyang.net.common.annotation.NoTokenRequired;
+import liuyuyang.net.common.annotation.RateLimit;
 import liuyuyang.net.common.utils.Paging;
 import liuyuyang.net.common.utils.Result;
 import liuyuyang.net.dto.article.ArticleFormDTO;
@@ -74,6 +75,7 @@ public class ArticleController {
     @GetMapping("/{id}")
     @ApiOperation("获取文章")
     @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 6)
+    @RateLimit
     public Result<Article> get(@PathVariable Integer id, @RequestParam(defaultValue = "") String password) {
         password = !password.isEmpty() ? password : "";
         Article data = articleService.get(id, password);

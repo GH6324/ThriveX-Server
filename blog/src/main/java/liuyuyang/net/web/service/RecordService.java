@@ -17,4 +17,6 @@ public interface RecordService extends IService<Record> {
     RecordVO getRecordData(Integer id);
 
     Page<RecordVO> getRecordList(RecordFilterDTO recordFilterDTO);
+
+    Integer incrementRecordLike(Integer id, Integer count);
 }

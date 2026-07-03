@@ -1,6 +1,7 @@
 package liuyuyang.net.web.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import liuyuyang.net.core.execption.CustomException;
@@ -85,5 +86,20 @@ public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> impleme
         List<Record> raw = queryRecordList(recordFilterDTO);
         List<RecordVO> list = raw.stream().map(RecordServiceImpl::toRecordVO).collect(Collectors.toList());
         return commonUtils.paginate(recordFilterDTO, list);
+    }
+
+    @Override
+    public Integer incrementRecordLike(Integer id, Integer count) {
+        Record data = recordMapper.selectById(id);
+        if (data == null) {
+            throw new CustomException("该说说不存在");
+        }
+
+        UpdateWrapper<Record> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", id).setSql("like_count = like_count + " + count);
+        recordMapper.update(null, updateWrapper);
+
+        Record updated = recordMapper.selectById(id);
+        return updated.getLikeCount() != null ? updated.getLikeCount() : count;
     }
 }

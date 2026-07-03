@@ -1,6 +1,7 @@
 package liuyuyang.net.web.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import liuyuyang.net.enums.article.ArticleStatusEnum;
@@ -555,6 +556,21 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             throw new CustomException("获取失败：该文章不存在");
         data.setView(data.getView() + 1);
         articleMapper.updateById(data);
+    }
+
+    @Override
+    public Integer incrementArticleLike(Integer id, Integer count) {
+        Article data = articleMapper.selectById(id);
+        if (data == null) {
+            throw new CustomException("该文章不存在");
+        }
+
+        UpdateWrapper<Article> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", id).setSql("like_count = like_count + " + count);
+        articleMapper.update(null, updateWrapper);
+
+        Article updated = articleMapper.selectById(id);
+        return updated.getLikeCount() != null ? updated.getLikeCount() : count;
     }
 
     // 关联文章数据

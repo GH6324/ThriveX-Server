@@ -41,6 +41,8 @@ public interface ArticleService extends IService<Article> {
 
     void recordViewArticleData(Integer id);
 
+    Integer incrementArticleLike(Integer id, Integer count);
+
     ArticleVO bindingArticleData(Integer id);
 
     void importArticleList(MultipartFile[] list) throws IOException;

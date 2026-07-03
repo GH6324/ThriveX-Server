@@ -11,6 +11,7 @@ import liuyuyang.net.core.utils.Result;
 import liuyuyang.net.dto.PageDTO;
 import liuyuyang.net.dto.record.RecordFilterDTO;
 import liuyuyang.net.dto.record.RecordFormDTO;
+import liuyuyang.net.dto.record.RecordLikeDTO;
 import liuyuyang.net.validation.ValidationGroups;
 import liuyuyang.net.vo.record.RecordCommentVO;
 import liuyuyang.net.vo.record.RecordVO;
@@ -87,5 +88,15 @@ public class RecordController {
     public Result<Map<String, Object>> getRecordCommentList(@PathVariable Integer id, PageDTO pageDTO) {
         Page<RecordCommentVO> list = recordCommentService.getRecordCommentListByRecordId(id, pageDTO);
         return Result.success(Paging.filter(list));
+    }
+
+    @NoTokenRequired
+    @RateLimit
+    @PostMapping("/{id}/like")
+    @ApiOperation("递增说说点赞数")
+    @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 8)
+    public Result<Integer> incrementRecordLike(@PathVariable Integer id, @RequestBody @Validated RecordLikeDTO recordLikeDTO) {
+        Integer likeCount = recordService.incrementRecordLike(id, recordLikeDTO.getCount());
+        return Result.success(likeCount);
     }
 }

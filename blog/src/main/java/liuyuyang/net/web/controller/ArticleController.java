@@ -12,6 +12,7 @@ import liuyuyang.net.core.utils.Result;
 import liuyuyang.net.dto.article.ArticleFormDTO;
 import liuyuyang.net.dto.PageDTO;
 import liuyuyang.net.dto.article.ArticleFilterDTO;
+import liuyuyang.net.dto.article.ArticleLikeDTO;
 import liuyuyang.net.validation.ValidationGroups;
 import liuyuyang.net.vo.article.ArticleVO;
 import liuyuyang.net.web.service.ArticleService;
@@ -149,6 +150,16 @@ public class ArticleController {
     public Result<String> recordViewArticleData(@PathVariable Integer article_id) {
         articleService.recordViewArticleData(article_id);
         return Result.success();
+    }
+
+    @NoTokenRequired
+    @RateLimit
+    @PostMapping("/{id}/like")
+    @ApiOperation("递增文章点赞数")
+    @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 14)
+    public Result<Integer> incrementArticleLike(@PathVariable Integer id, @RequestBody @Validated ArticleLikeDTO articleLikeDTO) {
+        Integer likeCount = articleService.incrementArticleLike(id, articleLikeDTO.getCount());
+        return Result.success(likeCount);
     }
 
     @PostMapping("/import")

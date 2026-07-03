@@ -30,6 +30,7 @@ CREATE TABLE `article` (
   `cover` varchar(300) DEFAULT NULL COMMENT '文章封面',
   `view` int DEFAULT '0' COMMENT '文章浏览量',
   `comment` int DEFAULT '0' COMMENT '评论数量',
+  `like_count` int NOT NULL DEFAULT '0' COMMENT '点赞数',
   `create_time` bigint DEFAULT NULL COMMENT '文章创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
@@ -379,6 +380,7 @@ CREATE TABLE `record` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` text NOT NULL COMMENT '内容',
   `images` json DEFAULT NULL COMMENT '图片',
+  `like_count` int NOT NULL DEFAULT '0' COMMENT '点赞数',
   `create_time` bigint NOT NULL COMMENT '时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `record_pk_2` (`id`)

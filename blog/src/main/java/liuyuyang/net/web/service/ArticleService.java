@@ -43,6 +43,8 @@ public interface ArticleService extends IService<Article> {
 
     Integer incrementArticleLike(Integer id, Integer count);
 
+    Integer incrementArticleShare(Integer id, Integer count);
+
     ArticleVO bindingArticleData(Integer id);
 
     void importArticleList(MultipartFile[] list) throws IOException;

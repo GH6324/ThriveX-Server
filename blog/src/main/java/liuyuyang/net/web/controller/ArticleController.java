@@ -13,6 +13,7 @@ import liuyuyang.net.dto.article.ArticleFormDTO;
 import liuyuyang.net.dto.PageDTO;
 import liuyuyang.net.dto.article.ArticleFilterDTO;
 import liuyuyang.net.dto.article.ArticleLikeDTO;
+import liuyuyang.net.dto.article.ArticleShareDTO;
 import liuyuyang.net.validation.ValidationGroups;
 import liuyuyang.net.vo.article.ArticleVO;
 import liuyuyang.net.web.service.ArticleService;
@@ -160,6 +161,16 @@ public class ArticleController {
     public Result<Integer> incrementArticleLike(@PathVariable Integer id, @RequestBody @Validated ArticleLikeDTO articleLikeDTO) {
         Integer likeCount = articleService.incrementArticleLike(id, articleLikeDTO.getCount());
         return Result.success(likeCount);
+    }
+
+    @NoTokenRequired
+    @RateLimit
+    @PostMapping("/{id}/share")
+    @ApiOperation("递增文章分享数")
+    @ApiOperationSupport(author = "刘宇阳 | liuyuyang1024@yeah.net", order = 15)
+    public Result<Integer> incrementArticleShare(@PathVariable Integer id, @RequestBody @Validated ArticleShareDTO articleShareDTO) {
+        Integer shareCount = articleService.incrementArticleShare(id, articleShareDTO.getCount());
+        return Result.success(shareCount);
     }
 
     @PostMapping("/import")

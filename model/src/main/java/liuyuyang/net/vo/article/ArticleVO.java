@@ -46,6 +46,9 @@ public class ArticleVO {
     @ApiModelProperty(value = "点赞数", example = "0")
     private Integer likeCount;
 
+    @ApiModelProperty(value = "分享数", example = "0")
+    private Integer shareCount;
+
     @ApiModelProperty(value = "分类列表")
     private List<CateVO> cateList = new ArrayList<>();
 

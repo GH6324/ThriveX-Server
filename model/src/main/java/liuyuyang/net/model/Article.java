@@ -39,4 +39,7 @@ public class Article extends BaseModel {
 
     @ApiModelProperty(value = "点赞数", example = "0")
     private Integer likeCount;
+
+    @ApiModelProperty(value = "分享数", example = "0")
+    private Integer shareCount;
 }

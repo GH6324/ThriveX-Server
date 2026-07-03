@@ -573,6 +573,21 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         return updated.getLikeCount() != null ? updated.getLikeCount() : count;
     }
 
+    @Override
+    public Integer incrementArticleShare(Integer id, Integer count) {
+        Article data = articleMapper.selectById(id);
+        if (data == null) {
+            throw new CustomException("该文章不存在");
+        }
+
+        UpdateWrapper<Article> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("id", id).setSql("share_count = share_count + " + count);
+        articleMapper.update(null, updateWrapper);
+
+        Article updated = articleMapper.selectById(id);
+        return updated.getShareCount() != null ? updated.getShareCount() : count;
+    }
+
     // 关联文章数据
     @Override
     public ArticleVO bindingArticleData(Integer id) {

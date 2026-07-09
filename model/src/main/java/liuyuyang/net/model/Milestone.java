@@ -34,10 +34,9 @@ public class Milestone {
  @Size(max =2000, message = "描述不能超过2000个字符", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
  private String description;
 
- @TableField(typeHandler = JacksonTypeHandler.class)
- @ApiModelProperty(value = "封面图列表", example = "[\"https://example.com/image.jpg\"]")
- @Size(max =10, message = "封面图数量不能超过10张", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
- private List<String> images;
+ @ApiModelProperty(value = "封面图", example = "https://example.com/image.jpg")
+ @Size(max =500, message = "封面图地址不能超过500个字符", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
+ private String image;
 
  @TableField(typeHandler = JacksonTypeHandler.class)
  @ApiModelProperty(value = "标签", example = "[\"生命\",\"起点\"]")

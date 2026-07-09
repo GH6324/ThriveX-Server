@@ -247,7 +247,7 @@ CREATE TABLE `env_config` (
 
 LOCK TABLES `env_config` WRITE;
 /*!40000 ALTER TABLE `env_config` DISABLE KEYS */;
-INSERT INTO `env_config` VALUES (1,'baidu_statis','{\"site_id\": 17256142, \"access_token\": \"\"}','B 百度统计：在控制端首页显示网站数据'),(2,'email','{\"host\": \"smtp.qq.com\", \"port\": 465, \"password\": \"123\", \"username\": \"xxx@qq.com\"}','邮件发送配置'),(3,'gaode_map_key','{\"key_code\": \"\", \"security_code\": \"\"}','高德地图配置'),(4,'gaode_coordinate','{\"key\": \"xxx\"}','高德地图坐标配置'),(5,'qiniu_storage','{\"domain\": \"\", \"zlevel\": 1, \"root_dir\": \"static\", \"end_point\": \"\", \"access_key\": \"\", \"secret_key\": \"\", \"bucket_name\": \"\"}','七牛云存储'),(6,'baidu_statis_key','{\"key\": \"\"}','A 百度统计：在前端获取该配置来激活统计功能'),(7,'hcaptcha_key','{\"key\": \"\"}','人机验证配置'),(8,'is_system_init','{\"value\": true}','系统是否初始化');
+INSERT INTO `env_config` VALUES (1,'baidu_statis','{\"site_id\": 17256142, \"access_token\": \"\"}','B 百度统计：在控制端首页显示网站数据'),(2,'email','{\"host\": \"smtp.qq.com\", \"port\": 465, \"password\": \"123\", \"username\": \"xxx@qq.com\"}','邮件发送配置'),(3,'gaode_map_key','{\"key_code\": \"\", \"security_code\": \"\"}','高德地图配置'),(4,'gaode_coordinate','{\"key\": \"xxx\"}','高德地图坐标配置'),(5,'qiniu_storage','{\"domain\": \"\", \"zlevel\": 1, \"root_dir\": \"static\", \"end_point\": \"\", \"access_key\": \"\", \"secret_key\": \"\", \"bucket_name\": \"\"}','七牛云存储'),(6,'baidu_statis_key','{\"key\": \"\"}','A 百度统计：在前端获取该配置来激活统计功能'),(7,'hcaptcha_key','{\"key\": \"\"}','人机验证配置'),(8,'is_system_init','{\"value\": false}','系统是否初始化');
 /*!40000 ALTER TABLE `env_config` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +352,7 @@ CREATE TABLE `milestone` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL COMMENT '标题',
   `description` varchar(2000) DEFAULT NULL COMMENT '描述',
-  `images` json DEFAULT NULL COMMENT '封面图列表',
+  `image` varchar(500) DEFAULT NULL COMMENT '封面图',
   `tags` json DEFAULT NULL COMMENT '标签',
   `event_date` bigint NOT NULL COMMENT '事件时间戳',
   PRIMARY KEY (`id`),
@@ -366,7 +366,7 @@ CREATE TABLE `milestone` (
 
 LOCK TABLES `milestone` WRITE;
 /*!40000 ALTER TABLE `milestone` DISABLE KEYS */;
-INSERT INTO `milestone` VALUES (1,'降生于世','在一个金秋九月，人生的故事正式开始。从此，这个世界多了一份期待，也多了一段不断向前的旅程。','[\"https://images.unsplash.com/photo-1544126592-807ade215a0b?w=800&h=450&fit=crop&q=80\", \"https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&h=450&fit=crop&q=80\"]','[\"生命\", \"起点\"]',1063555200000),(2,'第一次接触电脑','第一次真正接触电脑，被屏幕里的世界深深吸引，也在心里种下了对技术和互联网的好奇。','[\"https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=450&fit=crop&q=80\", \"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=450&fit=crop&q=80\"]','[\"启蒙\", \"电脑\"]',1285776000000),(3,'中考夺魁 · 迈入省重点','三年磨一剑，以优异成绩考入省级重点高中，开启了追逐梦想的新篇章。','[\"https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=450&fit=crop&q=80\", \"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=450&fit=crop&q=80\"]','[\"学业\", \"突破\"]',1529424000000),(4,'踏入大学 · 计算机之路','怀揣对代码与创造的热爱，正式成为计算机相关专业学生，在技术的海洋中扬帆远航。','[\"https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=450&fit=crop&q=80\", \"https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&h=450&fit=crop&q=80\"]','[\"大学\", \"技术\"]',1630425600000),(5,'开源项目 Star 破千','独立开发的开源项目逐渐被更多开发者看到和认可，技术影响力开始显现。','[\"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&q=80\", \"https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=800&h=450&fit=crop&q=80\", \"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=450&fit=crop&q=80\"]','[\"开源\", \"里程碑\"]',1724083200000),(6,'毕业答辩 · 全优通过','以创新项目完成毕业答辩，获得评审认可，为学生时代画上阶段性的句号，也为下一段旅程打开新的大门。','[\"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=450&fit=crop&q=80\"]','[\"毕业\", \"新起点\"]',1778947200000);
+INSERT INTO `milestone` VALUES (2,'第一次接触电脑','第一次真正接触电脑，被屏幕里的世界深深吸引，也在心里种下了对技术和互联网的好奇。','https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=450&fit=crop&q=80','[\"启蒙\", \"电脑\"]',1285776000000),(3,'中考夺魁 · 迈入省重点','三年磨一剑，以优异成绩考入省级重点高中，开启了追逐梦想的新篇章。','https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=450&fit=crop&q=80','[\"学业\", \"突破\"]',1529424000000),(4,'踏入大学 · 计算机之路','怀揣对代码与创造的热爱，正式成为计算机相关专业学生，在技术的海洋中扬帆远航。','https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=450&fit=crop&q=80','[\"大学\", \"技术\"]',1630425600000),(5,'开源项目 Star 破千','独立开发的开源项目逐渐被更多开发者看到和认可，技术影响力开始显现。','https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&q=80','[\"开源\", \"里程碑\"]',1724083200000),(6,'毕业答辩 · 全优通过','以创新项目完成毕业答辩，获得评审认可，为学生时代画上阶段性的句号，也为下一段旅程打开新的大门。','https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=450&fit=crop&q=80','[\"毕业\", \"新起点\"]',1778947200000);
 /*!40000 ALTER TABLE `milestone` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -560,7 +560,7 @@ CREATE TABLE `user_token` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_token_pk_2` (`id`),
   UNIQUE KEY `user_token_pk_3` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户 token';
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户 token';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -569,7 +569,7 @@ CREATE TABLE `user_token` (
 
 LOCK TABLES `user_token` WRITE;
 /*!40000 ALTER TABLE `user_token` DISABLE KEYS */;
-INSERT INTO `user_token` VALUES (161,1,'eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3ODM4MzQxNjF9.xRAwQCNiXT5kE06lr6FJWODCxQGg81vOWuzkykeXNao');
+INSERT INTO `user_token` VALUES (162,1,'eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3ODM4NDQ2NzR9.DssIrLosoUgKrpilIfP8a8baaDcrHFc_dT88VGJcKXg');
 /*!40000 ALTER TABLE `user_token` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -669,4 +669,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-09 15:22:32
+-- Dump completed on 2026-07-09 16:31:56

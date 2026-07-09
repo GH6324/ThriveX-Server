@@ -187,7 +187,7 @@ CREATE TABLE `cate` (
 
 LOCK TABLES `cate` WRITE;
 /*!40000 ALTER TABLE `cate` DISABLE KEYS */;
-INSERT INTO `cate` VALUES (1,'💎 默认分类','/','kfbj',0,'cate',0,1),(68,'⛳️ 足迹','/footprint','zj',83,'page',0,1),(69,'👋 关于我','/my','my',83,'page',0,8),(70,'😇 朋友圈','/friend','pyq',83,'page',0,4),(71,'💌 留言墙','/wall/all','wall',83,'page',0,5),(72,'🔥 GitHub','https://github.com/LiuYuYang01/ThriveX-Blog','github',83,'page',0,10),(73,'📊 统计','/data','data',83,'page',0,11),(74,'🏕️ 闪念','/record','record',83,'page',0,2),(77,'🔭 我的设备','/equipment','wdsb',83,'page',0,7),(78,'🏷️ 标签墙','/tags','bqy',83,'page',0,6),(79,'💪 我的履历','/resume','wdll',83,'page',0,9),(81,'🐟 鱼塘','/fishpond','yt',83,'page',0,3),(83,'🧩 探索','/','ts',0,'page',0,2);
+INSERT INTO `cate` VALUES (1,'💎 默认分类','/','kfbj',0,'cate',0,1),(84,'🌟 人生大事件','/milestone','rsdsj',83,'page',0,12),(68,'⛳️ 足迹','/footprint','zj',83,'page',0,1),(69,'👋 关于我','/my','my',83,'page',0,8),(70,'😇 朋友圈','/friend','pyq',83,'page',0,4),(71,'💌 留言墙','/wall/all','wall',83,'page',0,5),(72,'🔥 GitHub','https://github.com/LiuYuYang01/ThriveX-Blog','github',83,'page',0,10),(73,'📊 统计','/data','data',83,'page',0,11),(74,'🏕️ 闪念','/record','record',83,'page',0,2),(77,'🔭 我的设备','/equipment','wdsb',83,'page',0,7),(78,'🏷️ 标签墙','/tags','bqy',83,'page',0,6),(79,'💪 我的履历','/resume','wdll',83,'page',0,9),(81,'🐟 鱼塘','/fishpond','yt',83,'page',0,3),(83,'🧩 探索','/','ts',0,'page',0,2);
 /*!40000 ALTER TABLE `cate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,6 +279,35 @@ LOCK TABLES `footprint` WRITE;
 /*!40000 ALTER TABLE `footprint` DISABLE KEYS */;
 INSERT INTO `footprint` VALUES (33,'东方明珠','','上海市浦东新区世纪大道','121.499718,31.239703','[]',1599667200000);
 /*!40000 ALTER TABLE `footprint` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `milestone`
+--
+
+DROP TABLE IF EXISTS `milestone`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `milestone` (
+ `id` int NOT NULL AUTO_INCREMENT,
+ `event_date` bigint NOT NULL COMMENT '事件时间戳',
+ `title` varchar(100) NOT NULL COMMENT '标题',
+ `description` varchar(2000) DEFAULT NULL COMMENT '描述',
+ `images` json DEFAULT NULL COMMENT '封面图列表',
+ `tags` json DEFAULT NULL COMMENT '标签',
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `milestone_pk_2` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `milestone`
+--
+
+LOCK TABLES `milestone` WRITE;
+/*!40000 ALTER TABLE `milestone` DISABLE KEYS */;
+INSERT INTO `milestone` VALUES (1,1063555200000,'降生于世','在一个金秋九月，刘宇阳呱呱坠地，从此为这个家庭带来了无尽的欢笑与温暖。','["https://images.unsplash.com/photo-1544126592-807ade215a0b?w=400&h=220&fit=crop&q=80"]','["生命","起点"]'),(2,1529424000000,'中考夺魁 ·迈入省重点','三年磨一剑，以全市前五十的优异成绩考入省级重点高中，开启了逐梦的新篇章。','["https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=220&fit=crop&q=80"]','["学业","突破"]'),(3,1630425600000,'踏入大学 ·计算机之路','怀揣对代码与创造的热爱，正式成为计算机科学专业学生，在技术的海洋中扬帆远航。','["https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=220&fit=crop&q=80"]','["大学","技术"]'),(4,1724083200000,'开源项目 Star破千','独立开发的开源工具在 GitHub 获得1000+ Star，被全球开发者认可，技术影响力初显。','["https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=220&fit=crop&q=80"]','["开源","里程碑"]'),(5,1778947200000,'毕业答辩 · 全优通过','以 AI 驱动的创新项目完成毕业答辩，获评审一致好评，获评优秀毕业生。','["https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop&q=80"]','["毕业","AI"]');
+/*!40000 ALTER TABLE `milestone` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

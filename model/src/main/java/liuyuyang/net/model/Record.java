@@ -22,4 +22,10 @@ public class Record extends BaseModel {
     private String images;
     @ApiModelProperty(value = "点赞数", example = "0")
     private Integer likeCount;
+    @ApiModelProperty(value = "心情", example = "😊")
+    @Size(max = 16, message = "心情不能超过16个字符", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
+    private String mood;
+    @ApiModelProperty(value = "位置", example = "厦门市 · 环岛路")
+    @Size(max = 255, message = "位置不能超过255个字符", groups = {ValidationGroups.Create.class, ValidationGroups.Update.class})
+    private String location;
 }
